@@ -26,13 +26,13 @@ This Lab will help you understand OTP workflow (one-time-password)/ Second-Facto
 
     ```bash
 
-    <copy>cd $ORACLEAQ_HOME; source workflowCreateTEQ.sh;
+    <copy>cd $ORACLEAQ_HOME/aqPlsql; source workflowCreateTEQ.sh;
 
     </copy>
 
     ```
 
-## Task 2: The user places the order, and the Application generates a 4-digit OTP
+## Place the order, and the Application generates a 4-digit OTP
 
 Below are the code samples to create the workflow
 
@@ -54,7 +54,7 @@ Below are the code samples to create the workflow
 
       - Message(OrderId, username,   0  , deliveryLocation, "PENDING")
 
-## Task 3: Deliverer meets User
+## Deliverer meets User
 
   1. User shares OTP to Deliverer.
 
@@ -64,7 +64,17 @@ Below are the code samples to create the workflow
 
       - Message(OrderId, username, 9707 , deliveryLocation, "PENDING")
 
-## Task 4: OTP verfication
+## Task 2: Verify OTP
+
+- Execute the following sequence of commands into cloud shell:
+
+    ```bash
+
+    <copy>cd $ORACLEAQ_HOME/aqPlsql; source workflowEnqueueDequeueTEQ.sh;
+
+    </copy>
+
+    ```
 
 - **Application verfication for OTP is successful:**
 
@@ -94,19 +104,9 @@ Below are the code samples to create the workflow
 
     4. Deliverer declines delivery to User.
 
-- Execute the following sequence of commands into cloud shell:
-
-    ```bash
-
-    <copy>cd $ORACLEAQ_HOME; source workflowEnqueueDequeueTEQ.sh;
-
-    </copy>
-
-    ```
-
      You can view the source code for this lab [here.](https://github.com/oracle/microservices-datadriven/tree/main/workshops/oracleAQ)
 
-## Task 5: Workflow using Java
+## Task 3: Workflow using Java
 
 1. Execute the following sequence of commands into cloud shell:
 
@@ -118,7 +118,7 @@ Below are the code samples to create the workflow
 
     You can view the java source code for this lab [here.](https://github.com/oracle/microservices-datadriven/tree/main/workshops/oracleAQ/aqJava/src/main/java/com/examples/workflowTEQ/WorkflowTEQ.java)
 
-## Task 6: Drop queues
+## Task 4: Drop queues
 
 1. Below are the code samples to cleanup workflow Queues
 
@@ -132,7 +132,7 @@ Below are the code samples to create the workflow
 
     ```bash
 
-    <copy>cd $ORACLEAQ_HOME; source workflowCleanupTEQ.sh;
+    <copy>cd $ORACLEAQ_HOME/aqPlsql; source workflowCleanupTEQ.sh;
 
     </copy>
 
