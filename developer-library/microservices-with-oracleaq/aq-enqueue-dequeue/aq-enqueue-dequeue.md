@@ -16,58 +16,63 @@ This lab will give an understanding of Advanced Queues creation using different 
 
 - This workshop assumes you have an Oracle cloud account and configured setup in Lab 1.
 
-## Task 1: Create Advanced Queues(AQ)
+## Task 1: Create AQ, Enqueue, Dequeue and Cleanup using PL/SQL
 
 1. Below are the code samples to create AQ:
 
-    ![createAQ](./images/create-aq.png " ")
+    - Single consumer 
 
-    - Single consumer classic queue with Payload as ADT, RAW and JSON using PL/SQL.
+    - Multi-Consumer 
 
-    - Multi-Consumer classic queue with Payload as RAW using PL/SQL.  
+        ![createAQ](./images/create-aq.png " ")
 
-2. Execute the following sequence of commands into cloud shell:
+    - Execute the following sequence of commands into cloud shell:  
 
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source createAQ.sh;
-    </copy>
-    ```
+        ```bash
+        <copy>cd $PLSQL_AQ; source createAQ.sh;
+        </copy>
+        ```
 
-## Task 2: AQ Enqueue
-
-1. Below are the code samples to Enqueue AQ:
+2. Below are the code samples to Enqueue AQ:
 
     ![enqueueAQ](./images/enqueue-aq.png " ")
 
-    - Enqueue for Single consumer classic queue with Payload as ADT and RAW using PL/SQL.
+    - Execute the following sequence of commands into cloud shell:
 
-    - Enqueue for multi-consumer classic queue with Payload as RAW using PL/SQL.
+        ```bash
+        <copy>cd $PLSQL_AQ; source enqueueAQ.sh;
+        </copy>
+        ```
 
-2. Execute the following sequence of commands into cloud shell:
-
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source enqueueAQ.sh;
-    </copy>
-    ```
-
-## Task 3: Basic Dequeue
-
-1. Below are the code samples to dequeue AQ
+3. Below are the code samples to dequeue AQ
 
     ![dequeueAQ](./images/dequeue-aq.png " ")
 
-    - Dequeue for Single consumer classic queue with Payload as ADT and RAW using PL/SQL.
+    - Execute the following sequence of commands into cloud shell:
 
-    - Dequeue for multi-consumer classic queue with Payload as RAW using PL/SQL.
+        ```bash
+        <copy>cd $PLSQL_AQ; source dequeueAQ.sh;
+        </copy>
+        ```
 
-2. Execute the following sequence of commands into cloud shell:
+4. Below are the code samples to cleanup AQ
 
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source dequeueAQ.sh;
-    </copy>
-    ```
+    - Stop Queues
 
-## Task 4: Create AQ, Enqueue and Dequeue using Java
+    - Drop Queues
+
+    - Drop Queue Tables
+
+        ![cleanupAQ](./images/cleanup-aq.png " ")
+
+    - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $PLSQL_AQ; source cleanupAQ.sh;
+        </copy>
+        ```
+
+## Task 2: Create AQ, Enqueue, Dequeue and Cleanup using Java
 
 1. Point to Point
     - Execute the following sequence of commands into cloud shell:
@@ -85,25 +90,25 @@ This lab will give an understanding of Advanced Queues creation using different 
         </copy>
         ```
 
-    You can view the source code for this lab [here.](https://github.com/oracle/microservices-datadriven/tree/main/workshops/oracleAQ/aqJava/src/main/java/com/examples/enqueueDequeueAQ/EnqueueDequeueAQ.java)
+    You can view the source code for this lab [here.](https://github.com/oracle/microservices-datadriven/tree/main/workshops/oracleAQ/qJava/src/main/java/com/examples/enqueueDequeueAQ/EnqueueDequeueAQ.java)
 
-## Task 5: Create AQ, Enqueue and Dequeue using Python
+## Task 3: Create Queues, Enqueue, Dequeue and cleanup using Python
 
-1. Create AQ using PLSQL
+1. Create AQ 
 
       - Execute the following sequence of commands into cloud shell:
 
         ```bash
-        <copy>cd $ORACLEAQ_HOME/aqPython; source createAQPython.sh;
+        <copy>cd $PYTHON_AQ; python3.6 pythonCreateAQ.py;
         </copy>
         ```
 
-2. Enqueue, Dequeue AQ for Payload ADT, RAW and JMS using Python
+2. Enqueue, Dequeue AQ for Payload as ADT, RAW and JMS
 
       - Execute the following sequence of commands into cloud shell:
 
         ```bash
-        <copy>cd $ORACLEAQ_HOME/aqPython; pyhton3 PythonAQ.py;
+        <copy>cd $PYTHON_AQ; pyhton3.6 pythonEnqDeqAQ.py;
         </copy>
         ```
 
@@ -112,28 +117,38 @@ This lab will give an understanding of Advanced Queues creation using different 
       - Execute the following sequence of commands into cloud shell:
 
         ```bash
-        <copy>cd $ORACLEAQ_HOME/aqPython; source cleanupAQPython.sh;
+        <copy>cd $PYTHON_AQ; python3.6 pythonCleanupAQ.py;
         </copy>
         ```
 
-## Task 6: Drop queues
+## Task 4: Create Queues, Enqueue, Dequeue and Cleanup using Node.js
 
-1. Below are the code samples to cleanup AQ
+1. Create AQ
 
-    ![cleanupAQ](./images/cleanup-aq.png " ")
+      - Execute the following sequence of commands into cloud shell:
 
-    - Stop classic Queues
+        ```bash
+        <copy>cd $NODE_AQ; node nodeCreateAQ.js;
+        </copy>
+        ```
 
-    - Drop classic Queues
+2. Enqueue, Dequeue AQ for Payload ADT, RAW
 
-    - Drop Queue Tables
+      - Execute the following sequence of commands into cloud shell:
 
-2. Execute the following sequence of commands into cloud shell:
+        ```bash
+        <copy>cd $NODE_AQ; node nodeEnqDeqAQ.js;
+        </copy>
+        ```
 
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source cleanupAQ.sh;
-    </copy>
-    ```
+3. Clean up AQ
+
+      - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $NODE_AQ; node nodeEnqDeqAQ.js;
+        </copy>
+        ```
 
 You may now **proceed to the next lab.**
 

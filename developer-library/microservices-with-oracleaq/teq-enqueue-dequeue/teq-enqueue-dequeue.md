@@ -16,91 +16,127 @@ Transactional Event Queues(TEQ) samples to create queues using different payload
 
 - This workshop assumes you have an Oracle cloud account and configured setup in Lab 1.
 
-## Task 1: Create TEQ
+## Task 1: Create TEQ, Enqueue, Dequeue and Cleanup using PLSQL
 
 1. Below are the code samples to create TEQ
 
     ![teqCreate](./images/create-teq.png " ")
 
-    - Multi-consumer TEQ with Payload as RAW using PL/SQL.
+    - Execute the following sequence of commands into cloud shell
 
-    - Multi-Consumer TEQ with Payload as Object Type using PL/SQL.
+        ```bash
+        <copy>cd $ORACLETEQ_HOME/TEQPlsql; source createTEQ.sh;
+        </copy>
+        ```
 
-    - Multi-Consumer TEQ with Payload as JSON Type using PL/SQL.
-
-2. Execute the following sequence of commands into cloud shell
-
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source createTEQ.sh;
-    </copy>
-    ```
-
-## Task 2: Enqueue in TEQ
-
-1. Below are the code samples to enqueue TEQ
+2. Below are the code samples to Enqueue TEQ:
 
     ![enqueueTEQ](./images/enqueue-teq.png " ")
 
-    - Enqueue for multi-consumer TEQ with Payload as RAW using PL/SQL.
+    - Execute the following sequence of commands into cloud shell:
 
-    - Enqueue for multi-Consumer TEQ with Payload as Object Type using PL/SQL.
+        ```bash
+        <copy>cd $PLSQL_TEQ; source enqueueTEQ.sh;
+        </copy>
+        ```
 
-    - Enqueue for multi-Consumer TEQ with Payload as JSON Type using PL/SQL.
-
-1. Execute the following sequence of commands into cloud shell
-
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source enqueueTEQ.sh;
-    </copy>
-    ```
-
-## Task 3: Dequeue in TEQ
-
-1. Below are the code samples to dequque TEQ
+3. Below are the code samples to Dequeue TEQ
 
     ![dequeueTEQ](./images/dequeue-teq.png " ")
 
-    - Enqueue for multi-consumer TEQ with Payload as RAW using PL/SQL.
+    - Execute the following sequence of commands into cloud shell:
 
-    - Enqueue for multi-Consumer TEQ with Payload as Object Type using PL/SQL.
+        ```bash
+        <copy>cd $PLSQL_TEQ; source dequeueTEQ.sh;
+        </copy>
+        ```
 
-    - Enqueue for multi-Consumer TEQ with Payload as JSON Type using PL/SQL.
+4. Below are the code samples to cleanup TEQ
 
-2. Execute the following sequence of commands into cloud shell
+    - Stop Queues
 
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source dequeueTEQ.sh;
-    </copy>
-    ```
+    - Drop Queues
 
-## Task 4: TEQ Enqueue and Dequeue using Java
+    - Drop Queue Tables
+
+    ![cleanupTEQ](./images/cleanup-teq.png " ")
+
+    - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $PLSQL_TEQ; source cleanupTEQ.sh;
+        </copy>
+        ```
+
+## Task 2: TEQ Enqueue and Dequeue using Java
 
 1. Execute the following sequence of commands into cloud shell
 
     ```bash
-    <copy> curl http://localhost:8081/oracleAQ/pubSubTEQ </copy>
+    <copy> curl http://localhost:8081/oracleTEQ/pubSubTEQ </copy>
     ```
 
-    You can view the source code for this lab [here.](https://github.com/oracle/microservices-datadriven/tree/main/workshops/oracleAQ/aqJava/src/main/java/com/examples/enqueueDequeueTEQ/EnqueueDequeueTEQ.java)
+    You can view the source code for this lab [here.](https://github.com/oracle/microservices-datadriven/tree/main/workshops/oracleTEQ/qJava/src/main/java/com/examples/enqueueDequeueTEQ/EnqueueDequeueTEQ.java)
 
-## Task 5: Drop TEQ
+## Task 3: Create Queues, Enqueue, Dequeue and cleanup using Python
 
-1. Below are the code samples to cleanup TEQ
+1. Create TEQ 
 
-    ![cleanupTEQ](./images/cleanup-teq.png " ")
+      - Execute the following sequence of commands into cloud shell:
 
-    - Stop classic Queues
+        ```bash
+        <copy>cd $PYTHON_TEQ; python3.6 pythonCreateTEQ.py;
+        </copy>
+        ```
 
-    - Drop classic Queues
+2. Enqueue, Dequeue TEQ for Payload as ADT, RAW and JMS
 
-2. Execute the following sequence of commands into cloud shell
+      - Execute the following sequence of commands into cloud shell:
 
-    ```bash
-    <copy>cd $ORACLEAQ_HOME/aqPlsql; source cleanupTEQ.sh;
-    </copy>
-    ```
+        ```bash
+        <copy>cd $PYTHON_TEQ; pyhton3.6 pythonEnqDeqTEQ.py;
+        </copy>
+        ```
 
- You may now **proceed to the next lab.**
+3. Clean up for Python TEQ
+
+      - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $PYTHON_TEQ; python3.6 pythonCleanupTEQ.py;
+        </copy>
+        ```
+
+## Task 4: Create Queues, Enqueue, Dequeue and Cleanup using Node.js
+
+1. Create TEQ
+
+      - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $NODE_TEQ; node nodeCreateTEQ.js;
+        </copy>
+        ```
+
+2. Enqueue, Dequeue TEQ for Payload ADT, RAW
+
+      - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $NODE_TEQ; node nodeEnqDeqTEQ.js;
+        </copy>
+        ```
+
+3. Clean up TEQ
+
+      - Execute the following sequence of commands into cloud shell:
+
+        ```bash
+        <copy>cd $NODE_TEQ; node nodeEnqDeqTEQ.js;
+        </copy>
+        ```
+
+You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
